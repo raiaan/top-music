@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +38,6 @@ public class MainActivityFragment extends Fragment implements  AdapterView.OnIte
     Call<Artist> artistCall;
     ApiInterface apiInterface;
     Call<TopTrack>trackCall;
-    List<Artist_> artistList;
-    List<Track> tracks;
     Intent intent;
     SharedPreferences sharedPreferences;
     Boolean selectedType;
@@ -50,6 +51,7 @@ public class MainActivityFragment extends Fragment implements  AdapterView.OnIte
                              Bundle savedInstanceState) {
         View view  = inflater.inflate(R.layout.main_fragment, container, false);
         ButterKnife.bind(this,view);
+        setHasOptionsMenu(true);
         apiInterface= Connect.getClient().create(ApiInterface.class);
         selectedType=readFromSharePref();
         gettingArtistOrTrackFromCloud();
@@ -59,17 +61,29 @@ public class MainActivityFragment extends Fragment implements  AdapterView.OnIte
 
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_main,menu);
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         intent=new Intent(getActivity(),Main2Activity.class);
         startActivity(intent);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        selectedType=readFromSharePref();
+        gettingArtistOrTrackFromCloud();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()==R.id.top_artist)
             selectedType=true;
-        else
+        else if(item.getItemId()==R.id.top_track)
             selectedType=false;
         writeToSharedPref(selectedType);
         gettingArtistOrTrackFromCloud();
@@ -87,7 +101,8 @@ public class MainActivityFragment extends Fragment implements  AdapterView.OnIte
 
     Boolean readFromSharePref(){
         sharedPreferences=getActivity().getSharedPreferences("type",getActivity().MODE_PRIVATE);
-        return sharedPreferences.getBoolean("trackOrArtist",true);
+        Boolean selected =sharedPreferences.getBoolean("trackOrArtist",true);
+        return selected;
     }
 
 
