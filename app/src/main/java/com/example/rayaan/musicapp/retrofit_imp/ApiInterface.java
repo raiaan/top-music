@@ -1,7 +1,7 @@
 package com.example.rayaan.musicapp.retrofit_imp;
-import com.example.rayaan.musicapp.artist_info.ArtistInfo;
-import com.example.rayaan.musicapp.top_artist_model.Artist;
-import com.example.rayaan.musicapp.top_tracks_model.TopTrack;
+import com.example.rayaan.musicapp.Models.artist_info.ArtistInfo;
+import com.example.rayaan.musicapp.Models.top_artist_model.Artist;
+import com.example.rayaan.musicapp.Models.top_tracks_model.TopTrack;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.rayaan.musicapp.top_artist_model.Artist_;
+import com.example.rayaan.musicapp.Models.top_artist_model.Artist_;
 import com.example.rayaan.musicapp.R;
 import com.squareup.picasso.Picasso;
 

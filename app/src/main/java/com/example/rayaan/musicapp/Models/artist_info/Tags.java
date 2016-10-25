@@ -1,5 +1,5 @@
 
-package com.example.rayaan.musicapp.artist_info;
+package com.example.rayaan.musicapp.Models.artist_info;
 
 import com.google.gson.annotations.SerializedName;
 

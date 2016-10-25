@@ -1,10 +1,10 @@
 
-package com.example.rayaan.musicapp.artist_info;
+package com.example.rayaan.musicapp.Models.artist_info;
 
 
 import com.google.gson.annotations.SerializedName;
 
-public class Image_ {
+public class Image {
     @SerializedName("#text")
     private String _text;
     @SerializedName("size")
@@ -14,7 +14,7 @@ public class Image_ {
      * No args constructor for use in serialization
      * 
      */
-    public Image_() {
+    public Image() {
     }
 
     /**
@@ -22,7 +22,7 @@ public class Image_ {
      * @param _text
      * @param size
      */
-    public Image_(String _text, String size) {
+    public Image(String _text, String size) {
         this._text = _text;
         this.size = size;
     }

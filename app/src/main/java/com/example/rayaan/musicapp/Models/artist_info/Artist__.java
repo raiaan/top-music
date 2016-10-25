@@ -1,30 +1,37 @@
 
-package com.example.rayaan.musicapp.artist_info;
+package com.example.rayaan.musicapp.Models.artist_info;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Tag {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Artist__ {
 
     @SerializedName("name")
     private String name;
     @SerializedName("url")
     private String url;
+    @SerializedName("image")
+    private List<Image_> image = new ArrayList<Image_>();
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Tag() {
+    public Artist__() {
     }
 
     /**
      * 
      * @param name
+     * @param image
      * @param url
      */
-    public Tag(String name, String url) {
+    public Artist__(String name, String url, List<Image_> image) {
         this.name = name;
         this.url = url;
+        this.image = image;
     }
 
     /**
@@ -61,6 +68,24 @@ public class Tag {
      */
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    /**
+     * 
+     * @return
+     *     The image
+     */
+    public List<Image_> getImage() {
+        return image;
+    }
+
+    /**
+     * 
+     * @param image
+     *     The image
+     */
+    public void setImage(List<Image_> image) {
+        this.image = image;
     }
 
 }

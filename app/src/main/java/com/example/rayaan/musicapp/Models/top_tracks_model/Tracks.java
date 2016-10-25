@@ -1,5 +1,5 @@
 
-package com.example.rayaan.musicapp.top_tracks_model;
+package com.example.rayaan.musicapp.Models.top_tracks_model;
 import java.util.ArrayList;
 import java.util.List;
 

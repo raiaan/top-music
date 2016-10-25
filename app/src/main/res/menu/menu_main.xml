@@ -5,7 +5,7 @@
     <item
         android:id="@+id/top_artist"
         android:orderInCategory="100"
-        android:title="@string/top_track"
+        android:title="@string/top_artist"
         app:showAsAction="never" />
     <item
         android:id="@+id/top_track"

@@ -1,25 +1,27 @@
 
-package com.example.rayaan.musicapp.artist_info;
+package com.example.rayaan.musicapp.Models.artist_info;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ArtistInfo {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Similar {
     @SerializedName("artist")
-    private Artist_ artist;
+    private List<Artist__> artist = new ArrayList<Artist__>();
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public ArtistInfo() {
+    public Similar() {
     }
 
     /**
      * 
      * @param artist
      */
-    public ArtistInfo(Artist_ artist) {
+    public Similar(List<Artist__> artist) {
         this.artist = artist;
     }
 
@@ -28,7 +30,7 @@ public class ArtistInfo {
      * @return
      *     The artist
      */
-    public Artist_ getArtist() {
+    public List<Artist__> getArtist() {
         return artist;
     }
 
@@ -37,7 +39,7 @@ public class ArtistInfo {
      * @param artist
      *     The artist
      */
-    public void setArtist(Artist_ artist) {
+    public void setArtist(List<Artist__> artist) {
         this.artist = artist;
     }
 

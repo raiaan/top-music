@@ -7,11 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.rayaan.musicapp.artist_info.ArtistInfo;
-import com.example.rayaan.musicapp.artist_info.Artist_;
+import com.example.rayaan.musicapp.Models.artist_info.ArtistInfo;
 import com.example.rayaan.musicapp.retrofit_imp.ApiInterface;
 import com.example.rayaan.musicapp.retrofit_imp.Connect;
-import com.example.rayaan.musicapp.top_artist_model.Artist;
 
 import retrofit2.Call;
 import retrofit2.Callback;

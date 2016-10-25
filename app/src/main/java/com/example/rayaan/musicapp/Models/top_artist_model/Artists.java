@@ -1,46 +1,49 @@
 
-package com.example.rayaan.musicapp.top_artist_model;
+package com.example.rayaan.musicapp.Models.top_artist_model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class Artist {
+public class Artists {
 
-    private Artists artists;
+    private List<Artist_> artist = new ArrayList<Artist_>();
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Artist() {
+    public Artists() {
     }
 
     /**
-     * 
-     * @param artists
+     *
+     * @param artist
      */
-    public Artist(Artists artists) {
-        this.artists = artists;
+    public Artists(List<Artist_> artist) {
+        this.artist = artist;
     }
 
     /**
      * 
      * @return
-     *     The artists
+     *     The artist
      */
-    public Artists getArtists() {
-        return artists;
+    public List<Artist_> getArtist() {
+        return artist;
     }
 
     /**
      * 
-     * @param artists
-     *     The artists
+     * @param artist
+     *     The artist
      */
-    public void setArtists(Artists artists) {
-        this.artists = artists;
+    public void setArtist(List<Artist_> artist) {
+        this.artist = artist;
     }
+
 
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;

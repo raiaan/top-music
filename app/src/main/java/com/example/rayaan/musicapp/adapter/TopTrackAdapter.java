@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rayaan.musicapp.R;
-import com.example.rayaan.musicapp.top_tracks_model.Track;
+import com.example.rayaan.musicapp.Models.top_tracks_model.Track;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
