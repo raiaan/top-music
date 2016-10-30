@@ -47,7 +47,6 @@ public class TopTrackAdapter extends BaseAdapter {
         TextView textView = (TextView)view.findViewById(R.id.name);
         ImageView imageView=(ImageView)view.findViewById(R.id.music_img);
         textView.setText(tracks.get(i).getName().toString());
-        Log.v("ddata"," "+tracks.get(i).getImage().get(3).getText());
         Picasso.with(context).load(tracks.get(i).getImage().get(3).getText()).into(imageView);
         return view;
     }

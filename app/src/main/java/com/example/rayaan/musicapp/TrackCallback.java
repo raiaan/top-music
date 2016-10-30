@@ -1,6 +1,10 @@
 package com.example.rayaan.musicapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.rayaan.musicapp.Models.top_tracks_model.TopTrack;
@@ -16,23 +20,33 @@ import retrofit2.Response;
 /**
  * Created by Rayaan on 25/10/2016.
  */
-public class TrackCallback implements Callback<TopTrack> {
+public class TrackCallback implements Callback<TopTrack> , AdapterView.OnItemClickListener{
     GridView gridView;
     Context context;
-
-    public TrackCallback(GridView gridView, Context context) {
+    List<Track> tracks;
+    Intent intent;
+    public TrackCallback(GridView gridView, Context context , Intent intent) {
         this.gridView = gridView;
         this.context = context;
+        this.intent=intent;
     }
 
     @Override
     public void onResponse(Call<TopTrack> call, Response<TopTrack> response) {
-        List<Track> tracks=response.body().getTracks().getTrack();
+        tracks=response.body().getTracks().getTrack();
         gridView.setAdapter(new TopTrackAdapter(tracks,context));
+        gridView.setOnItemClickListener(this);
     }
 
     @Override
     public void onFailure(Call<TopTrack> call, Throwable t) {
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        intent.putExtra("image",tracks.get(i).getImage().get(3).getText());
+        Log.v("image",tracks.get(i).getImage().get(3).getText());
+        context.startActivity(intent);
     }
 }

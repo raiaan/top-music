@@ -34,7 +34,7 @@ import retrofit2.Response;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment implements  AdapterView.OnItemClickListener{
+public class MainActivityFragment extends Fragment {
     Call<Artist> artistCall;
     ApiInterface apiInterface;
     Call<TopTrack>trackCall;
@@ -54,8 +54,8 @@ public class MainActivityFragment extends Fragment implements  AdapterView.OnIte
         setHasOptionsMenu(true);
         apiInterface= Connect.getClient().create(ApiInterface.class);
         selectedType=readFromSharePref();
+        intent=new Intent(getActivity(),Main2Activity.class);
         gettingArtistOrTrackFromCloud();
-        gridView.setOnItemClickListener(this);
         return view;
     }
 
@@ -66,11 +66,6 @@ public class MainActivityFragment extends Fragment implements  AdapterView.OnIte
         inflater.inflate(R.menu.menu_main,menu);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        intent=new Intent(getActivity(),Main2Activity.class);
-        startActivity(intent);
-    }
 
     @Override
     public void onResume() {
@@ -114,7 +109,7 @@ public class MainActivityFragment extends Fragment implements  AdapterView.OnIte
          else
          {
              trackCall=apiInterface.getTopTrack(FinalData.api_key,FinalData.formate,"chart.gettoptracks");
-             trackCall.enqueue(new TrackCallback(gridView,getActivity()));
+             trackCall.enqueue(new TrackCallback(gridView,getActivity(),intent));
          }
      }
 }
