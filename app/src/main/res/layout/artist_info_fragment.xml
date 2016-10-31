@@ -8,14 +8,48 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ArtistInfoFragment"
-    tools:showIn="@layout/activity_main2">
-    <ImageView
+    tools:showIn="@layout/activity_main2"
+    android:background="@color/main_background">
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/track_image"/>
+        android:orientation="horizontal"
+        android:background="@color/main_background">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/recycker_item_background">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/track_image"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/artist_name"
+                android:textColor="@color/item_name_font"/>
+        </LinearLayout>
+    </LinearLayout>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/artist_name"/>
-
+        android:text="biograghy : ______________________"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/biography"
+        android:background="@color/recycker_item_background"
+        android:textColor="@color/item_name_font"/>
+    <GridView
+        android:id="@+id/top_track_and_simlair_artist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="2dp"
+        android:horizontalSpacing="2dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        />
 </LinearLayout>

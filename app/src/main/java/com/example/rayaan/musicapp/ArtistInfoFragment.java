@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,7 +32,11 @@ public class ArtistInfoFragment extends Fragment {
     @Bind(R.id.track_image)
     ImageView image;
     @Bind(R.id.artist_name)
-    TextView trackTitle;
+    TextView artist_name;
+    @Bind(R.id.biography)
+    TextView biography;
+    @Bind(R.id.top_artist_gridview)
+    GridView gridView;
     Artist_ artist;
     public ArtistInfoFragment() {
     }
@@ -42,13 +47,14 @@ public class ArtistInfoFragment extends Fragment {
         View view=inflater.inflate(R.layout.artist_info_fragment, container, false);
         ButterKnife.bind(this,view);
         apiInterface=Connect.getClient().create(ApiInterface.class);
-        infoCall=apiInterface.getArtistInfo(FinalData.api_key,FinalData.formate,"Coldplay","artist.getinfo");
-        infoCall.enqueue(new ArtistInfoCallingBack());
         update_view(getActivity().getIntent().getExtras());
         return view;
     }
     public void update_view(Bundle p){
         artist =(Artist_) p.getSerializable("artist");
         Picasso.with(getActivity()).load(artist.getImage().get(3).getText()).into(image);
+        artist_name.setText(artist.getName());
+        infoCall=apiInterface.getArtistInfo(FinalData.api_key,FinalData.formate,artist.getName(),"artist.getinfo");
+        infoCall.enqueue(new ArtistInfoCallingBack(biography,gridView,getActivity()));
     }
 }
