@@ -3,10 +3,12 @@ package com.example.rayaan.musicapp.Models.top_artist_model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Image {
+@SuppressWarnings("serial")
+public class Image implements Serializable {
 
     @SerializedName("#text")
     private String text;

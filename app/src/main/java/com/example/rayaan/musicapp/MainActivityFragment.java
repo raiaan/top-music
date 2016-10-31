@@ -86,7 +86,7 @@ public class MainActivityFragment extends Fragment {
     }
 
 
-    Boolean readFromSharePref(){
+    public Boolean readFromSharePref(){
         sharedPreferences=getActivity().getSharedPreferences("type",getActivity().MODE_PRIVATE);
         Boolean selected =sharedPreferences.getBoolean("trackOrArtist",true);
         return selected;
@@ -96,7 +96,7 @@ public class MainActivityFragment extends Fragment {
      void gettingArtistOrTrackFromCloud(){
          if(selectedType==true){
              artistCall = apiInterface.getArtist(FinalData.api_key,FinalData.formate,"chart.gettopartists");
-             artistCall.enqueue(new ArtistCallback(gridView,getActivity()));
+             artistCall.enqueue(new ArtistCallback(gridView,getActivity(),intent));
          }
          else
          {

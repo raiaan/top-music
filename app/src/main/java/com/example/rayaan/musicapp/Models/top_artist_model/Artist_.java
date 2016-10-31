@@ -1,12 +1,14 @@
 
 package com.example.rayaan.musicapp.Models.top_artist_model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Artist_ {
+@SuppressWarnings("serial")
+public class Artist_ implements Serializable {
 
     private String name;
     private String playcount;

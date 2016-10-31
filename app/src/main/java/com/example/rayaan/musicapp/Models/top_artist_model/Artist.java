@@ -1,10 +1,12 @@
 
 package com.example.rayaan.musicapp.Models.top_artist_model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Artist {
+@SuppressWarnings("serial")
+public class Artist implements Serializable {
 
     private Artists artists;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();

@@ -34,6 +34,7 @@ public class TrackCallback implements Callback<TopTrack> , AdapterView.OnItemCli
     @Override
     public void onResponse(Call<TopTrack> call, Response<TopTrack> response) {
         tracks=response.body().getTracks().getTrack();
+        Log.v("data",response.raw()+" ");
         gridView.setAdapter(new TopTrackAdapter(tracks,context));
         gridView.setOnItemClickListener(this);
     }
@@ -45,8 +46,7 @@ public class TrackCallback implements Callback<TopTrack> , AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        intent.putExtra("image",tracks.get(i).getImage().get(3).getText());
-        Log.v("image",tracks.get(i).getImage().get(3).getText());
+        intent.putExtra("track_image",tracks.get(i).getImage().get(3).getText());
         context.startActivity(intent);
     }
 }

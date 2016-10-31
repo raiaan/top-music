@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import com.example.rayaan.musicapp.Models.top_artist_model.Artist_;
+
 public class Main2Activity extends AppCompatActivity {
 
     @Override
@@ -18,8 +20,6 @@ public class Main2Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
     }
 
 }
