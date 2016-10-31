@@ -18,10 +18,8 @@ public class Main2Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Main2ActivityFragment fragment2;
-        fragment2 = new Main2ActivityFragment();
-        fragment2.setArguments(getIntent().getExtras());
-        fragment2.update_track(getIntent().getExtras());
+
+
     }
 
 }
