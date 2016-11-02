@@ -10,11 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rayaan.musicapp.Models.artist_info.ArtistInfo;
+import com.example.rayaan.musicapp.Models.atrist_top_track.ArtistTopTrack;
 import com.example.rayaan.musicapp.Models.top_artist_model.Artist_;
 import com.example.rayaan.musicapp.retrofitCallingBack.ArtistInfoCallingBack;
 import com.example.rayaan.musicapp.retrofit_imp.ApiInterface;
 import com.example.rayaan.musicapp.retrofit_imp.Connect;
-import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,15 +28,9 @@ public class ArtistInfoFragment extends Fragment {
 
     Call<ArtistInfo>infoCall;
     ApiInterface apiInterface;
-    ArtistInfo info;
-    @Bind(R.id.track_image)
-    ImageView image;
-    @Bind(R.id.artist_name)
-    TextView artist_name;
-    @Bind(R.id.biography)
-    TextView biography;
-    @Bind(R.id.top_artist_gridview)
-    GridView gridView;
+    Call<ArtistTopTrack>topTrackCall;
+    @Bind(R.id.artist_gridView)
+    GridView similar_artist_and_top_track_gridView;
     Artist_ artist;
     public ArtistInfoFragment() {
     }
@@ -52,9 +46,9 @@ public class ArtistInfoFragment extends Fragment {
     }
     public void update_view(Bundle p){
         artist =(Artist_) p.getSerializable("artist");
-        Picasso.with(getActivity()).load(artist.getImage().get(3).getText()).into(image);
-        artist_name.setText(artist.getName());
         infoCall=apiInterface.getArtistInfo(FinalData.api_key,FinalData.formate,artist.getName(),"artist.getinfo");
-        infoCall.enqueue(new ArtistInfoCallingBack(biography,gridView,getActivity()));
+        topTrackCall=apiInterface.getTopTrack(FinalData.api_key,FinalData.formate,"artist.gettoptracks",artist.getName());
+        infoCall.enqueue(new ArtistInfoCallingBack(artist, similar_artist_and_top_track_gridView,getActivity(),topTrackCall));
     }
+
 }

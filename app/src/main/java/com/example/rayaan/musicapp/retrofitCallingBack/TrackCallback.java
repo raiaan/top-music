@@ -34,7 +34,6 @@ public class TrackCallback implements Callback<TopTrack> , AdapterView.OnItemCli
     @Override
     public void onResponse(Call<TopTrack> call, Response<TopTrack> response) {
         tracks=response.body().getTracks().getTrack();
-        Log.v("data",response.raw()+" ");
         gridView.setAdapter(new TopTrackAdapter(tracks,context));
         gridView.setOnItemClickListener(this);
     }
