@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.rayaan.musicapp.Models.artist_info.ArtistInfo;
 import com.example.rayaan.musicapp.Models.top_artist_model.Artist_;
 import com.example.rayaan.musicapp.R;
 import com.squareup.picasso.Picasso;
@@ -20,15 +21,22 @@ import java.util.List;
 public class TopArtistAdapter extends BaseAdapter {
     List<Artist_>artist;
     Context context;
+    ArtistInfo artistInfo;
     public TopArtistAdapter(List<Artist_> artist, Context context) {
         this.artist = artist;
         this.context=context;
     }
 
+    public TopArtistAdapter(ArtistInfo artistInfo, Context context) {
+        this.artistInfo=artistInfo;
+        this.context=context;
+    }
 
     @Override
     public int getCount() {
-        return artist.size();
+        if (artistInfo==null)
+            return artist.size();
+        else return artistInfo.getArtist().getSimilar().getArtist().size();
     }
 
     @Override
@@ -47,8 +55,16 @@ public class TopArtistAdapter extends BaseAdapter {
                 .inflate(R.layout.main_item, viewGroup, false);
         TextView textView = (TextView)view.findViewById(R.id.name);
         ImageView imageView=(ImageView)view.findViewById(R.id.music_img);
-        textView.setText(artist.get(i).getName().toString());
-        Picasso.with(context).load(artist.get(i).getImage().get(3).getText()).into(imageView);
+        if (artist!=null)
+        {
+            textView.setText(artist.get(i).getName().toString());
+            Picasso.with(context).load(artist.get(i).getImage().get(3).getText()).into(imageView);
+
+        }
+        else{
+            textView.setText(artistInfo.getArtist().getSimilar().getArtist().get(i).getName());
+            Picasso.with(context).load(artistInfo.getArtist().getSimilar().getArtist().get(i).getImage().get(3).get_text()).into(imageView);
+        }
         return view;
     }
 }

@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,9 +9,12 @@
     android:background="@color/main_background"
     tools:context="com.example.rayaan.musicapp.MainActivityFragment"
     tools:showIn="@layout/activity_main">
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/if_it_is_artist_top_track"/>
     <GridView
-        android:id="@+id/top_artist_gridview"
+        android:id="@+id/tops_gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="auto_fit"
@@ -21,4 +24,4 @@
         android:gravity="center"
         />
 
-</FrameLayout>
+</LinearLayout>

@@ -33,7 +33,7 @@ public class MainActivityFragment extends Fragment {
     Intent intent;
     SharedPreferences sharedPreferences;
     Boolean selectedType;
-    @Bind(R.id.top_artist_gridview)
+    @Bind(R.id.tops_gridview)
     GridView gridView;
     public MainActivityFragment() {
     }

@@ -29,13 +29,13 @@ import retrofit2.Call;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class ArtistInfoFragment extends Fragment {
+public class ArtistTrackDetailFragment extends Fragment {
 
     ApiInterface apiInterface;
     String type;
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
-    public ArtistInfoFragment() {
+    public ArtistTrackDetailFragment() {
     }
 
     @Override
@@ -65,7 +65,7 @@ public class ArtistInfoFragment extends Fragment {
         Artist_ artist =(Artist_) p.getSerializable("artist");
         infoCall=apiInterface.getArtistInfo(FinalData.api_key,FinalData.formate,artist.getName(),"artist.getinfo");
         topTrackCall=apiInterface.getTopTrack(FinalData.api_key,FinalData.formate,"artist.gettoptracks",artist.getName());
-        infoCall.enqueue(new ArtistInfoCallingBack(artist, getActivity(),topTrackCall));
+        infoCall.enqueue(new ArtistInfoCallingBack( getActivity(),topTrackCall,recyclerView));
     }
     public  void update_track_view(Bundle p){
         Call<SimilarTracks>similartrackCall;
