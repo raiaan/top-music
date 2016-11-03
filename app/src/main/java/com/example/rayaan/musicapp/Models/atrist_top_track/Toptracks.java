@@ -1,13 +1,14 @@
 
-package com.example.rayaan.musicapp.Models.top_tracks_model;
+package com.example.rayaan.musicapp.Models.atrist_top_track;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tracks implements Serializable {
+public class Toptracks implements Serializable {
 
     private List<Track> track = new ArrayList<Track>();
-    private Attr attr;
+    private Attr_ attr;
 
     /**
      * 
@@ -32,7 +33,7 @@ public class Tracks implements Serializable {
      * @return
      *     The attr
      */
-    public Attr getAttr() {
+    public Attr_ getAttr() {
         return attr;
     }
 
@@ -41,7 +42,7 @@ public class Tracks implements Serializable {
      * @param attr
      *     The @attr
      */
-    public void setAttr(Attr attr) {
+    public void setAttr(Attr_ attr) {
         this.attr = attr;
     }
 

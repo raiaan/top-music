@@ -1,4 +1,5 @@
-package com.example.rayaan.musicapp.Models.top_tracks_model;
+package com.example.rayaan.musicapp.Models.atrist_top_track;
+
 
 import java.io.Serializable;
 

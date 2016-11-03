@@ -24,13 +24,11 @@ public class ArtistInfoCallingBack implements Callback<ArtistInfo> {
 
     Artist_ artistinfo;
     com.example.rayaan.musicapp.Models.top_artist_model.Artist_ artist;
-    GridView gridView;
     Context context;
     Call<ArtistTopTrack> topTrackCall;
     public ArtistInfoCallingBack(com.example.rayaan.musicapp.Models.top_artist_model.Artist_ artist
-            , GridView gridView, Context context, Call<ArtistTopTrack> topTrackCall) {
+            , Context context, Call<ArtistTopTrack> topTrackCall) {
         this.artist=artist;
-        this.gridView=gridView;
         this.context=context;
         this.topTrackCall=topTrackCall;
     }
@@ -42,8 +40,6 @@ public class ArtistInfoCallingBack implements Callback<ArtistInfo> {
             @Override
             public void onResponse(Call<ArtistTopTrack> call, Response<ArtistTopTrack> response) {
                 Toptracks tracks=response.body().getToptracks();
-                gridView.setAdapter(new ArtistGridViewAdapter(artist,artistinfo,context,tracks));
-                Log.v("check","enter");
             }
 
             @Override

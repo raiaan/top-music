@@ -1,12 +1,14 @@
 
 package com.example.rayaan.musicapp.Models.artist_info;
 
+import com.example.rayaan.musicapp.Models.Image;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Artist_ {
+public class Artist_ implements Serializable{
 
     @SerializedName("name")
     private String name;

@@ -1,12 +1,14 @@
 package com.example.rayaan.musicapp.retrofit_imp;
+
 import com.example.rayaan.musicapp.Models.artist_info.ArtistInfo;
 import com.example.rayaan.musicapp.Models.atrist_top_track.ArtistTopTrack;
+import com.example.rayaan.musicapp.Models.similar_tracks.SimilarTracks;
 import com.example.rayaan.musicapp.Models.top_artist_model.Artist;
 import com.example.rayaan.musicapp.Models.top_tracks_model.TopTrack;
+import com.example.rayaan.musicapp.Models.track_info.TrackInfo;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.OPTIONS;
 import retrofit2.http.Query;
 
 /**
@@ -24,5 +26,13 @@ public interface ApiInterface {
     @GET("/2.0/")
     Call<ArtistTopTrack> getTopTrack(@Query("api_key") String api_Key, @Query("format") String format,
                                      @Query("method")String method, @Query("artist") String name  );
+    @GET("/2.0/")
+    Call<TrackInfo> getTrackInfo(@Query("api_key") String api_Key, @Query("format") String format,
+                                @Query("method")String method, @Query("artist") String name,
+                                 @Query("track") String trackName);
+    @GET("/2.0/")
+    Call<SimilarTracks> getSimilarTrcks(@Query("api_key") String api_Key, @Query("format") String format,
+                                        @Query("method")String method, @Query("artist") String name,
+                                        @Query("track") String trackName);
 
 }

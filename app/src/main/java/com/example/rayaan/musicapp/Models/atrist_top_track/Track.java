@@ -1,16 +1,12 @@
-
-package com.example.rayaan.musicapp.Models.top_artist_model;
+package com.example.rayaan.musicapp.Models.atrist_top_track;
 
 import com.example.rayaan.musicapp.Models.Image;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-@SuppressWarnings("serial")
-public class Artist_ implements Serializable {
+public class Track implements Serializable {
 
     private String name;
     private String playcount;
@@ -18,35 +14,9 @@ public class Artist_ implements Serializable {
     private String mbid;
     private String url;
     private String streamable;
+    private Artist artist;
     private List<Image> image = new ArrayList<Image>();
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public Artist_() {
-    }
-
-    /**
-     * 
-     * @param listeners
-     * @param mbid
-     * @param name
-     * @param image
-     * @param streamable
-     * @param playcount
-     * @param url
-     */
-    public Artist_(String name, String playcount, String listeners, String mbid, String url, String streamable, List<Image> image) {
-        this.name = name;
-        this.playcount = playcount;
-        this.listeners = listeners;
-        this.mbid = mbid;
-        this.url = url;
-        this.streamable = streamable;
-        this.image = image;
-    }
+    private Attr attr;
 
     /**
      * 
@@ -159,6 +129,24 @@ public class Artist_ implements Serializable {
     /**
      * 
      * @return
+     *     The artist
+     */
+    public Artist getArtist() {
+        return artist;
+    }
+
+    /**
+     * 
+     * @param artist
+     *     The artist
+     */
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    /**
+     * 
+     * @return
      *     The image
      */
     public List<Image> getImage() {
@@ -174,12 +162,22 @@ public class Artist_ implements Serializable {
         this.image = image;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    /**
+     * 
+     * @return
+     *     The attr
+     */
+    public Attr getAttr() {
+        return attr;
     }
 
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    /**
+     * 
+     * @param attr
+     *     The @attr
+     */
+    public void setAttr(Attr attr) {
+        this.attr = attr;
     }
 
 }

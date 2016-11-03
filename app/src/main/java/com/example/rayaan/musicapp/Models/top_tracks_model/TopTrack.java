@@ -1,13 +1,13 @@
 
 package com.example.rayaan.musicapp.Models.top_tracks_model;
 
-import com.google.gson.annotations.SerializedName;
 
-public class TopTrack {
+import java.io.Serializable;
+
+public class TopTrack implements Serializable {
 
     private Tracks tracks;
-    @SerializedName("toptracks")
-    private Tracks track;
+
 
 
     public Tracks getTracks() {
@@ -19,11 +19,5 @@ public class TopTrack {
         this.tracks = tracks;
     }
 
-    public Tracks getTrack() {
-        return track;
-    }
 
-    public void setTrack(Tracks track) {
-        this.track = track;
-    }
 }

@@ -51,7 +51,7 @@ public class ArtistGridViewAdapter extends BaseAdapter {
         if(i==0)
         {
             view=LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.header_item, viewGroup, false);
+                    .inflate(R.layout.artist_header_item, viewGroup, false);
             infoSection(view);
             return view;
         }

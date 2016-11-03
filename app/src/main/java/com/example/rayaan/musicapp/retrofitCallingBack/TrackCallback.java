@@ -45,7 +45,8 @@ public class TrackCallback implements Callback<TopTrack> , AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        intent.putExtra("track_image",tracks.get(i).getImage().get(3).getText());
+        intent.putExtra("type","track");
+        intent.putExtra("track",tracks.get(i));
         context.startActivity(intent);
     }
 }

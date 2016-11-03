@@ -1,33 +1,10 @@
+package com.example.rayaan.musicapp.Models.track_info;
 
-package com.example.rayaan.musicapp.Models.artist_info;
 
-import com.google.gson.annotations.SerializedName;
+public class Tag {
 
-import java.io.Serializable;
-
-public class Tag implements Serializable {
-
-    @SerializedName("name")
     private String name;
-    @SerializedName("url")
     private String url;
-
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public Tag() {
-    }
-
-    /**
-     * 
-     * @param name
-     * @param url
-     */
-    public Tag(String name, String url) {
-        this.name = name;
-        this.url = url;
-    }
 
     /**
      * 

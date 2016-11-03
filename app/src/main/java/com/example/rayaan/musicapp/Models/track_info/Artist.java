@@ -1,8 +1,7 @@
-package com.example.rayaan.musicapp.Models.top_tracks_model;
 
-import java.io.Serializable;
+package com.example.rayaan.musicapp.Models.track_info;
 
-public class Artist implements Serializable {
+public class Artist {
 
     private String name;
     private String mbid;

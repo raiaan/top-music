@@ -1,10 +1,9 @@
+package com.example.rayaan.musicapp.Models.similar_tracks;
 
-package com.example.rayaan.musicapp.Models.top_tracks_model;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tracks implements Serializable {
+public class Similartrack {
 
     private List<Track> track = new ArrayList<Track>();
     private Attr attr;

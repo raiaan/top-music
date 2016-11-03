@@ -1,8 +1,7 @@
-package com.example.rayaan.musicapp.Models.top_tracks_model;
 
-import java.io.Serializable;
+package com.example.rayaan.musicapp.Models.similar_tracks;
 
-public class Streamable implements Serializable {
+public class Streamable {
 
     private String text;
     private String fulltrack;

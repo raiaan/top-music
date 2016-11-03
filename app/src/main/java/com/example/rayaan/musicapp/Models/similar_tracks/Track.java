@@ -1,22 +1,20 @@
 
-package com.example.rayaan.musicapp.Models.top_tracks_model;
+package com.example.rayaan.musicapp.Models.similar_tracks;
 
 import com.example.rayaan.musicapp.Models.Image;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Track implements Serializable
-{
+public class Track {
 
     private String name;
-    private String duration;
-    private String playcount;
-    private String listeners;
+    private Integer playcount;
     private String mbid;
+    private Double match;
     private String url;
     private Streamable streamable;
+    private Integer duration;
     private Artist artist;
     private List<Image> image = new ArrayList<Image>();
 
@@ -41,27 +39,9 @@ public class Track implements Serializable
     /**
      * 
      * @return
-     *     The duration
-     */
-    public String getDuration() {
-        return duration;
-    }
-
-    /**
-     * 
-     * @param duration
-     *     The duration
-     */
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
-    /**
-     * 
-     * @return
      *     The playcount
      */
-    public String getPlaycount() {
+    public Integer getPlaycount() {
         return playcount;
     }
 
@@ -70,26 +50,8 @@ public class Track implements Serializable
      * @param playcount
      *     The playcount
      */
-    public void setPlaycount(String playcount) {
+    public void setPlaycount(Integer playcount) {
         this.playcount = playcount;
-    }
-
-    /**
-     * 
-     * @return
-     *     The listeners
-     */
-    public String getListeners() {
-        return listeners;
-    }
-
-    /**
-     * 
-     * @param listeners
-     *     The listeners
-     */
-    public void setListeners(String listeners) {
-        this.listeners = listeners;
     }
 
     /**
@@ -108,6 +70,24 @@ public class Track implements Serializable
      */
     public void setMbid(String mbid) {
         this.mbid = mbid;
+    }
+
+    /**
+     * 
+     * @return
+     *     The match
+     */
+    public Double getMatch() {
+        return match;
+    }
+
+    /**
+     * 
+     * @param match
+     *     The match
+     */
+    public void setMatch(Double match) {
+        this.match = match;
     }
 
     /**
@@ -144,6 +124,24 @@ public class Track implements Serializable
      */
     public void setStreamable(Streamable streamable) {
         this.streamable = streamable;
+    }
+
+    /**
+     * 
+     * @return
+     *     The duration
+     */
+    public Integer getDuration() {
+        return duration;
+    }
+
+    /**
+     * 
+     * @param duration
+     *     The duration
+     */
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 
     /**

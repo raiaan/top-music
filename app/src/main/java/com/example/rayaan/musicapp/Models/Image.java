@@ -1,8 +1,11 @@
-package com.example.rayaan.musicapp.Models.top_tracks_model;
+package com.example.rayaan.musicapp.Models;
+
 
 import com.google.gson.annotations.SerializedName;
 
-public class Image {
+import java.io.Serializable;
+
+public class Image implements Serializable{
 
     @SerializedName("#text")
     private String text;

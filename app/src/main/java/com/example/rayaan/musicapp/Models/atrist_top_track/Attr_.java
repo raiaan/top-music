@@ -1,14 +1,33 @@
-package com.example.rayaan.musicapp.Models.top_tracks_model;
 
+package com.example.rayaan.musicapp.Models.atrist_top_track;
 
 import java.io.Serializable;
 
-public class Attr implements Serializable {
+public class Attr_ implements Serializable {
 
+    private String artist;
     private String page;
     private String perPage;
     private String totalPages;
     private String total;
+
+    /**
+     * 
+     * @return
+     *     The artist
+     */
+    public String getArtist() {
+        return artist;
+    }
+
+    /**
+     * 
+     * @param artist
+     *     The artist
+     */
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
 
     /**
      * 

@@ -4,7 +4,9 @@ package com.example.rayaan.musicapp.Models.artist_info;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Bio {
+import java.io.Serializable;
+
+public class Bio implements Serializable {
 
     @SerializedName("links")
     private Links links;

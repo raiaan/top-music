@@ -4,7 +4,9 @@ package com.example.rayaan.musicapp.Models.artist_info;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Image_ {
+import java.io.Serializable;
+
+public class Image_ implements Serializable {
     @SerializedName("#text")
     private String _text;
     @SerializedName("size")

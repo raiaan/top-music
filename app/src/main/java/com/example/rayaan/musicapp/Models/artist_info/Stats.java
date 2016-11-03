@@ -4,7 +4,9 @@ package com.example.rayaan.musicapp.Models.artist_info;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Stats {
+import java.io.Serializable;
+
+public class Stats implements Serializable {
     @SerializedName("listeners")
     private String listeners;
     @SerializedName("playcount")

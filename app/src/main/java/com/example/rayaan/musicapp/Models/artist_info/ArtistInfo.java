@@ -3,7 +3,9 @@ package com.example.rayaan.musicapp.Models.artist_info;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ArtistInfo {
+import java.io.Serializable;
+
+public class ArtistInfo implements Serializable {
 
     @SerializedName("artist")
     private Artist_ artist;

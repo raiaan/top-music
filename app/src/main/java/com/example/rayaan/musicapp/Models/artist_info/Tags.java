@@ -3,10 +3,11 @@ package com.example.rayaan.musicapp.Models.artist_info;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tags {
+public class Tags implements Serializable {
 
     @SerializedName("tag")
     private List<Tag> tag = new ArrayList<Tag>();

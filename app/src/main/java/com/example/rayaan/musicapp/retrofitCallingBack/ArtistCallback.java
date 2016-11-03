@@ -45,6 +45,7 @@ public class ArtistCallback implements Callback<Artist> ,AdapterView.OnItemClick
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         intent.putExtra("artist",artistList.get(i));
+        intent.putExtra("type","artist");
         context.startActivity(intent);
     }
 }
