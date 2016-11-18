@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 
 import com.example.rayaan.musicapp.Models.artist_info.ArtistInfo;
 import com.example.rayaan.musicapp.Models.atrist_top_track.ArtistTopTrack;
@@ -29,7 +28,7 @@ import retrofit2.Call;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class ArtistTrackDetailFragment extends Fragment {
+public class ArtistTrackDetailFragment extends android.app.Fragment {
 
     ApiInterface apiInterface;
     String type;
@@ -48,18 +47,10 @@ public class ArtistTrackDetailFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
         apiInterface=Connect.getClient().create(ApiInterface.class);
-        Bundle p = getActivity().getIntent().getExtras();
-        type = p.getString("type");
-        if (type.equals("artist"))
-        {
-            update_view(p);
-        }
-        else{
-            update_track_view(p);
-        }
+
         return view;
     }
-    public void update_view(Bundle p){
+    public void update_artist_view(Bundle p){
         Call<ArtistInfo>infoCall;
         Call<ArtistTopTrack>topTrackCall;
         Artist_ artist =(Artist_) p.getSerializable("artist");
@@ -74,6 +65,16 @@ public class ArtistTrackDetailFragment extends Fragment {
         trackInfoCall=apiInterface.getTrackInfo(FinalData.api_key,FinalData.formate,"track.getinfo",track.getArtist().getName(),track.getName());
         similartrackCall=apiInterface.getSimilarTrcks(FinalData.api_key,FinalData.formate,"track.getsimilar",track.getArtist().getName(),track.getName());
         similartrackCall.enqueue(new TrackInfoAndSimilarTrackCallingBack(similartrackCall,track,getActivity(),trackInfoCall,recyclerView));
+    }
+    public  void get_data_at_one_pane(Bundle p){
+        type = p.getString("type");
+        if (type.equals("artist"))
+        {
+            update_artist_view(p);
+        }
+        else{
+            update_track_view(p);
+        }
     }
 
 }

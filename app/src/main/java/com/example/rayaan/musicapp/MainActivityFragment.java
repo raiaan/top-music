@@ -1,9 +1,12 @@
 package com.example.rayaan.musicapp;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,15 +38,19 @@ public class MainActivityFragment extends Fragment {
     Boolean selectedType;
     @Bind(R.id.tops_gridview)
     GridView gridView;
-    public MainActivityFragment() {
-    }
-
+    Boolean is2bane ;
+    ArtistCallback artistCallback;
+    TrackCallback trackCallback;
+    ArtistTrackDetailFragment artist_track;
+    CheckIf2PaneOrNot checkIf2PaneOrNot;
+    public MainActivityFragment() {}
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view  = inflater.inflate(R.layout.main_fragment, container, false);
         ButterKnife.bind(this,view);
         setHasOptionsMenu(true);
+        is2bane=checkIf2PaneOrNot.is2pane();
         apiInterface= Connect.getClient().create(ApiInterface.class);
         selectedType=readFromSharePref();
         intent=new Intent(getActivity(),Main2Activity.class);
@@ -95,13 +102,28 @@ public class MainActivityFragment extends Fragment {
 
      void gettingArtistOrTrackFromCloud(){
          if(selectedType==true){
+             artistCallback=new ArtistCallback(gridView,getActivity(),intent,is2bane);
              artistCall = apiInterface.getArtist(FinalData.api_key,FinalData.formate,"chart.gettopartists");
-             artistCall.enqueue(new ArtistCallback(gridView,getActivity(),intent));
+             artistCall.enqueue(artistCallback );
          }
          else
          {
+             trackCallback = new TrackCallback(gridView,getActivity(),intent,is2bane);
              trackCall=apiInterface.getTopTrack(FinalData.api_key,FinalData.formate,"chart.gettoptracks");
-             trackCall.enqueue(new TrackCallback(gridView,getActivity(),intent));
+             trackCall.enqueue(trackCallback);
          }
      }
+    public interface CheckIf2PaneOrNot{
+        public Boolean is2pane();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try{
+            checkIf2PaneOrNot=(CheckIf2PaneOrNot) activity;
+        }catch (Exception e){
+
+        }
+    }
 }

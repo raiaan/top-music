@@ -20,6 +20,9 @@ public class Main2Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Bundle p = getIntent().getExtras();
+        ArtistTrackDetailFragment detailFragment = (ArtistTrackDetailFragment)getFragmentManager().findFragmentById(R.id.detail_fragment);
+        detailFragment.get_data_at_one_pane(p);
     }
 
 }
