@@ -34,6 +34,8 @@ public class ArtistTrackDetailFragment extends android.app.Fragment {
     String type;
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
+    Artist_ artist;
+    Track track;
     public ArtistTrackDetailFragment() {
     }
 
@@ -47,20 +49,36 @@ public class ArtistTrackDetailFragment extends android.app.Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
         apiInterface=Connect.getClient().create(ApiInterface.class);
-
+        if (savedInstanceState!=null)
+            get_data_at_one_pane(savedInstanceState);
         return view;
     }
+
+
+
     public void update_artist_view(Bundle p){
         Call<ArtistInfo>infoCall;
         Call<ArtistTopTrack>topTrackCall;
-        Artist_ artist =(Artist_) p.getSerializable("artist");
+        artist=(Artist_) p.getSerializable("artist");
         infoCall=apiInterface.getArtistInfo(FinalData.api_key,FinalData.formate,artist.getName(),"artist.getinfo");
         topTrackCall=apiInterface.getTopTrack(FinalData.api_key,FinalData.formate,"artist.gettoptracks",artist.getName());
         infoCall.enqueue(new ArtistInfoCallingBack( getActivity(),topTrackCall,recyclerView));
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        if (artist!=null){
+            outState.putSerializable("artist",artist);
+            outState.putString(type,"artist");
+        }else {
+            outState.putSerializable("track",track);
+            outState.putString("type","track");
+        }
+    }
+
     public  void update_track_view(Bundle p){
         Call<SimilarTracks>similartrackCall;
-        Track track=(Track)p.getSerializable("track");
+        track=(Track)p.getSerializable("track");
         Call<TrackInfo>trackInfoCall;
         trackInfoCall=apiInterface.getTrackInfo(FinalData.api_key,FinalData.formate,"track.getinfo",track.getArtist().getName(),track.getName());
         similartrackCall=apiInterface.getSimilarTrcks(FinalData.api_key,FinalData.formate,"track.getsimilar",track.getArtist().getName(),track.getName());

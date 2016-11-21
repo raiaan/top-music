@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +36,7 @@ public class MainActivityFragment extends Fragment {
     Call<TopTrack>trackCall;
     Intent intent;
     SharedPreferences sharedPreferences;
-    Boolean selectedType;
+    String selectedType;
     @Bind(R.id.tops_gridview)
     GridView gridView;
     Boolean is2bane ;
@@ -75,33 +76,28 @@ public class MainActivityFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.top_artist)
-            selectedType=true;
-        else if(item.getItemId()==R.id.top_track)
-            selectedType=false;
-        writeToSharedPref(selectedType);
+        if(item.getItemId()==R.id.action_sitting)
+        {
+            Intent intent= new Intent(getContext(),SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+
+        //writeToSharedPref(selectedType);
         gettingArtistOrTrackFromCloud();
         return super.onOptionsItemSelected(item);
     }
 
-
-    void writeToSharedPref(Boolean type){
-        sharedPreferences=getActivity().getSharedPreferences("type",getActivity().MODE_PRIVATE);
-        SharedPreferences.Editor editor= sharedPreferences.edit();
-        editor.putBoolean("trackOrArtist",type);
-        editor.commit();
-    }
-
-
-    public Boolean readFromSharePref(){
-        sharedPreferences=getActivity().getSharedPreferences("type",getActivity().MODE_PRIVATE);
-        Boolean selected =sharedPreferences.getBoolean("trackOrArtist",true);
+    public String readFromSharePref(){
+        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String selected =sharedPreferences.getString("type","chart.gettopartists");
         return selected;
     }
 
 
      void gettingArtistOrTrackFromCloud(){
-         if(selectedType==true){
+         if(selectedType.equals("chart.gettopartists")){
              artistCallback=new ArtistCallback(gridView,getActivity(),intent,is2bane);
              artistCall = apiInterface.getArtist(FinalData.api_key,FinalData.formate,"chart.gettopartists");
              artistCall.enqueue(artistCallback );

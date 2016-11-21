@@ -5,4 +5,15 @@
     <string name="action_settings">Setting</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="pref_list_title">Top tracks / Top artist</string>
+    <string name="pref_list_key">type</string>
+    <string name="pref_list_defult">chart.gettopartists</string>
+    <array name="pref_list_enteries">
+        <item>top track</item>
+        <item>top artist</item>
+    </array>
+    <array name="pref_list_enteries_value">
+        <item>chart.gettoptracks</item>
+        <item>chart.gettopartists</item>
+    </array>
 </resources>

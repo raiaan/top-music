@@ -3,13 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.rayaan.musicapp.MainActivity">
     <item
-        android:id="@+id/top_artist"
+        android:id="@+id/action_sitting"
         android:orderInCategory="100"
-        android:title="@string/top_artist"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/top_track"
-        android:orderInCategory="100"
-        android:title="@string/top_track"
+        android:title="@string/action_settings"
         app:showAsAction="never" />
 </menu>
